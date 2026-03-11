@@ -3,274 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administration - Mémorial Sankara</title>
-    <link rel="stylesheet" href="../client/css/admin.css">
+    <title>CV - KIMA SERAPHIN (1 page)</title>
+    <!-- Police Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #eef2f5;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+        .cv {
+            max-width: 1000px;
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin-bottom: 15px;
+        }
+        .btn-telecharger {
+            background: #1d4a6e;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            padding: 10px 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .btn-telecharger:hover {
+            background: #0b2b44;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0b2b44;
+            letter-spacing: -0.5px;
+            margin-bottom: 2px;
+        }
+        .sous-titre {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1d4a6e;
+            background: #e9ecf0;
+            display: inline-block;
+            padding: 4px 18px;
+            border-radius: 30px;
+            margin-bottom: 10px;
+        }
+        .coordonnees {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            font-size: 12px;
+            color: #2e4053;
+            border-top: 1px solid #cbd7e6;
+            border-bottom: 1px solid #cbd7e6;
+            padding: 8px 0;
+        }
+        .coordonnees span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .coordonnees i {
+            color: #1d4a6e;
+            width: 16px;
+            font-size: 13px;
+        }
+        /* Suppression de l'icône téléphone, remplacement par TEL: */
+        .coordonnees .tel::before {
+            content: "TEL:";
+            font-weight: 600;
+            margin-right: 4px;
+        }
+        .coordonnees .tel i {
+            display: none; /* on cache l'icône d'origine */
+        }
+        .section {
+            margin: 12px 0 8px 0;
+        }
+        .section-titre {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0b2b44;
+            text-transform: uppercase;
+            border-bottom: 2px solid #1d4a6e;
+            padding-bottom: 3px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        .profil-texte {
+            font-size: 12px;
+            line-height: 1.4;
+            text-align: justify;
+            color: #2e4053;
+            background: #f7faff;
+            padding: 10px 12px;
+            border-radius: 12px;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        .table-formation, .table-competences {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+        .table-formation td, .table-competences td {
+            padding: 4px 2px;
+            vertical-align: top;
+        }
+        .table-formation td:first-child {
+            font-weight: 700;
+            color: #1d4a6e;
+            width: 85px;
+        }
+        .table-competences td:first-child {
+            font-weight: 700;
+            color: #1d4a6e;
+            width: 110px;
+        }
+        .table-competences td {
+            border-bottom: 1px dashed #d0d9e2;
+        }
+        .projets-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px 10px;
+            font-size: 10.5px;
+        }
+        .projet-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 4px;
+        }
+        .projet-item i {
+            color: #1d4a6e;
+            font-size: 10px;
+            margin-top: 2px;
+        }
+        .exp-item {
+            margin-bottom: 10px;
+            background: #f8fbfe;
+            padding: 8px 10px;
+            border-radius: 12px;
+        }
+        .exp-titre {
+            font-weight: 700;
+            font-size: 13px;
+            color: #0b2b44;
+        }
+        .exp-lieu {
+            font-weight: 600;
+            color: #1d4a6e;
+            font-size: 11px;
+            margin: 2px 0 4px 0;
+        }
+        .exp-desc {
+            font-size: 10.5px;
+            color: #23415c;
+            padding-left: 14px;
+            list-style: none;
+        }
+        .exp-desc li {
+            margin-bottom: 2px;
+            display: flex;
+            align-items: flex-start;
+            gap: 4px;
+        }
+        .exp-desc li i {
+            font-size: 8px;
+            margin-top: 3px;
+            color: #1d4a6e;
+        }
+        .langues-interets {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 15px;
+            font-size: 11px;
+        }
+        .langues p, .interets p {
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .langues i, .interets i {
+            color: #1d4a6e;
+            width: 16px;
+            font-size: 12px;
+        }
+        .interets-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .interets-items span {
+            background: #e3ecf5;
+            padding: 3px 10px;
+            border-radius: 30px;
+            font-size: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        @media print {
+            body { background: white; padding: 0; }
+            .cv { box-shadow: none; border-radius: 0; padding: 0.2cm; }
+            .btn-telecharger { display: none; }
+        }
+    </style>
 </head>
 <body>
-    <div class="admin-container">
-        <!-- Sidebar Navigation -->
-        <nav class="admin-sidebar">
-            <div class="sidebar-header">
-                <h2>🏛️ Admin Sankara</h2>
-                <p>Tableau de bord</p>
+    <button class="btn-telecharger" id="downloadPDF">
+        <i class="fas fa-file-pdf"></i> Télécharger en PDF
+    </button>
+
+    <div class="cv" id="cv-content">
+        <div class="header">
+            <h1>SERAPHIN KIMA</h1>
+            <div class="sous-titre">Technicien Réseaux & Sécurité | Développeur Junior</div>
+            <div class="coordonnees">
+                <span><i class="fas fa-map-marker-alt"></i> Kadiogo, Patte d'oie secteur 52, Ouagadougou</span>
+                <!-- Remplacer l'icône téléphone par TEL: -->
+                <span class="tel"><i class="fas fa-phone-alt"></i> +226 67 77 09 63 / 78 13 62 40</span>
+                <span><i class="fas fa-envelope"></i> kimaseraphin@icloud.com</span>
+                <!-- Ajout du lien GitHub (à personnaliser) -->
+                <span><i class="fab fa-github"></i> github.com/seraphin-kima/portfolio</span>
             </div>
-            
-            <ul class="sidebar-menu">
-                <li><a href="#dashboard" class="active" data-section="dashboard">📊 Tableau de bord</a></li>
-                <li><a href="#products" data-section="products">🛍️ Produits</a></li>
-                <li><a href="#orders" data-section="orders">📦 Commandes</a></li>
-                <li><a href="#reservations" data-section="reservations">🎫 Réservations</a></li>
-                <li><a href="#users" data-section="users">👥 Utilisateurs</a></li>
-                <li><a href="#analytics" data-section="analytics">📈 Analytics</a></li>
-                <li><a href="/" class="logout">🚪 Retour au site</a></li>
-            </ul>
-        </nav>
+        </div>
 
-        <!-- Main Content -->
-        <main class="admin-main">
-            <header class="admin-header">
-                <div class="header-left">
-                    <h1 id="page-title">Tableau de bord</h1>
-                </div>
-                <div class="header-right">
-                    <span id="admin-user">Admin</span>
-                    <button id="refresh-data" class="btn-refresh">🔄 Actualiser</button>
-                </div>
-            </header>
+        <!-- Profil -->
+        <div class="section">
+            <div class="section-titre">Profil</div>
+            <p class="profil-texte">Étudiant en Licence Réseaux & Télécoms, passionné par la cybersécurité et le développement. Autonome, curieux, auto-apprentissage constant. Compétences solides en réseaux, sécurité, maintenance. Bon contact et esprit d'équipe.</p>
+        </div>
 
-            <!-- Dashboard Section -->
-            <section id="dashboard-section" class="admin-section active">
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon">💰</div>
-                        <div class="stat-info">
-                            <h3 id="total-revenue">0 USD</h3>
-                            <p>Chiffre d'affaires</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">📦</div>
-                        <div class="stat-info">
-                            <h3 id="total-orders">0</h3>
-                            <p>Commandes aujourd'hui</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">🎫</div>
-                        <div class="stat-info">
-                            <h3 id="total-reservations">0</h3>
-                            <p>Réservations à venir</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">⚠️</div>
-                        <div class="stat-info">
-                            <h3 id="low-stock-count">0</h3>
-                            <p>Produits stock bas</p>
-                        </div>
-                    </div>
-                </div>
+        <!-- Formation et Compétences -->
+        <div class="grid-2">
+            <div>
+                <div class="section-titre">Formation</div>
+                <table class="table-formation">
+                    <tr><td>2025–…</td><td>Licence Réseaux & Télécoms (en cours) – ESMI, Ouagadougou</td></tr>
+                    <tr><td>2022–23</td><td>Baccalauréat – Collège privé ETIENNE, CI</td></tr>
+                    <tr><td>2019–20</td><td>BEPC – Collège Moderne de Bingerville, CI</td></tr>
+                    <tr><td>2016–17</td><td>CEP – École Privée Saint Joseph, CI</td></tr>
+                </table>
+            </div>
+            <div>
+                <div class="section-titre">Compétences clés</div>
+                <table class="table-competences">
+                    <tr><td>Réseaux</td><td>LAN/VLAN, DHCP, routage, Wireshark, Linux Apache – Intermédiaire</td></tr>
+                    <tr><td>Cybersécurité</td><td>Metasploit, malwares, phishing, portails captifs – Avancé</td></tr>
+                    <tr><td>Développement</td><td>HTML/CSS/JS, Python/C/SQL (notions), Git/GitHub</td></tr>
+                    <tr><td>Outils & OS</td><td>Kali Linux, Wireshark, Ubuntu, Windows, VS Code</td></tr>
+                    <tr><td>Maintenance</td><td>Installation logiciels, remplacement composants, diagnostic</td></tr>
+                    <tr><td>IA & Certif.</td><td>IA quotidienne ; e-Council (EHE), Google, Zaid Security</td></tr>
+                </table>
+            </div>
+        </div>
 
-                <div class="charts-grid">
-                    <div class="chart-card">
-                        <h3>Commandes récentes</h3>
-                        <div id="recent-orders-list" class="orders-list">
-                            <!-- Liste des commandes chargée dynamiquement -->
-                        </div>
-                    </div>
-                    <div class="chart-card">
-                        <h3>Produits populaires</h3>
-                        <div id="popular-products" class="products-list">
-                            <!-- Produits populaires chargés dynamiquement -->
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <!-- Projets personnels -->
+        <div class="section">
+            <div class="section-titre">Projets personnels</div>
+            <div class="projets-grid">
+                <div class="projet-item"><i class="fas fa-chevron-right"></i> Malware éducatif (Metasploit, cadre éthique)</div>
+                <div class="projet-item"><i class="fas fa-chevron-right"></i> Analyse réseau Wireshark (capture HTTPS)</div>
+                <div class="projet-item"><i class="fas fa-chevron-right"></i> Sites phishing & portails captifs (tests intrusion)</div>
+                <div class="projet-item"><i class="fas fa-chevron-right"></i> Portfolio HTML/CSS/JS sur GitHub Pages</div>
+                <div class="projet-item"><i class="fas fa-chevron-right"></i> Configuration LAN/VLAN (Cisco Packet Tracer)</div>
+                <div class="projet-item"><i class="fas fa-chevron-right"></i> Serveur web Apache (Linux Ubuntu)</div>
+                <div class="projet-item"><i class="fas fa-chevron-right"></i> Missions freelance (dépannage, conseil)</div>
+                <div class="projet-item"><i class="fas fa-chevron-right"></i> Utilisation quotidienne d'IA</div>
+            </div>
+        </div>
 
-            <!-- Products Management Section -->
-            <section id="products-section" class="admin-section">
-                <div class="section-header">
-                    <h2>Gestion des produits</h2>
-                    <button id="add-product-btn" class="btn-primary">+ Ajouter un produit</button>
-                </div>
+        <!-- Expériences professionnelles -->
+        <div class="section">
+            <div class="section-titre">Expériences professionnelles</div>
+            <div class="exp-item">
+                <div class="exp-titre">Technicien informatique freelance</div>
+                <div class="exp-lieu">Indépendant — 2023 à aujourd'hui</div>
+                <ul class="exp-desc">
+                    <li><i class="fas fa-circle"></i> Dépannage, maintenance, installation OS/logiciels</li>
+                    <li><i class="fas fa-circle"></i> Remplacement composants (RAM, disque dur), assistance</li>
+                </ul>
+            </div>
+            <div class="exp-item">
+                <div class="exp-titre">Projets académiques (ESMI)</div>
+                <div class="exp-lieu">2025 à aujourd'hui</div>
+                <ul class="exp-desc">
+                    <li><i class="fas fa-circle"></i> Gestion de projets en équipe (réseaux virtuels)</li>
+                    <li><i class="fas fa-circle"></i> Configuration LAN/VLAN (Cisco), analyse Wireshark</li>
+                    <li><i class="fas fa-circle"></i> Serveurs Linux (Apache), documentation technique</li>
+                </ul>
+            </div>
+        </div>
 
-                <div class="filters-bar">
-                    <input type="text" id="product-search" placeholder="🔍 Rechercher un produit...">
-                    <select id="category-filter">
-                        <option value="all">Toutes les catégories</option>
-                        <option value="vêtements">Vêtements</option>
-                        <option value="livres">Livres</option>
-                        <option value="accessoires">Accessoires</option>
-                        <option value="art">Art</option>
-                    </select>
-                    <select id="status-filter">
-                        <option value="all">Tous les statuts</option>
-                        <option value="active">Actif</option>
-                        <option value="inactive">Inactif</option>
-                        <option value="out_of_stock">Rupture</option>
-                    </select>
+        <!-- Langues et centres d'intérêt -->
+        <div class="section">
+            <div class="section-titre">Langues & intérêts</div>
+            <div class="langues-interets">
+                <div class="langues">
+                    <p><i class="fas fa-language"></i> <strong>Français :</strong> Courant</p>
+                    <p><i class="fas fa-language"></i> <strong>Anglais :</strong> Technique intermédiaire</p>
+                    <p><i class="fas fa-language"></i> <strong>Mooré :</strong> Bien parlé</p>
                 </div>
-
-                <div class="table-container">
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>Image</th>
-                                <th>Nom</th>
-                                <th>Catégorie</th>
-                                <th>Prix</th>
-                                <th>Stock</th>
-                                <th>Statut</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="products-table-body">
-                            <!-- Données chargées dynamiquement depuis l'API -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="pagination" id="products-pagination">
-                    <!-- Pagination générée dynamiquement -->
-                </div>
-            </section>
-
-            <!-- Orders Management Section -->
-            <section id="orders-section" class="admin-section">
-                <div class="section-header">
-                    <h2>Gestion des commandes</h2>
-                </div>
-
-                <div class="filters-bar">
-                    <select id="order-status-filter">
-                        <option value="all">Tous les statuts</option>
-                        <option value="pending">En attente</option>
-                        <option value="confirmed">Confirmée</option>
-                        <option value="processing">En traitement</option>
-                        <option value="shipped">Expédiée</option>
-                        <option value="delivered">Livrée</option>
-                    </select>
-                    <input type="date" id="order-date-filter">
-                </div>
-
-                <div class="table-container">
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>N° Commande</th>
-                                <th>Client</th>
-                                <th>Montant</th>
-                                <th>Statut</th>
-                                <th>Date</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="orders-table-body">
-                            <!-- Données chargées dynamiquement -->
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <!-- Reservations Management Section -->
-            <section id="reservations-section" class="admin-section">
-                <div class="section-header">
-                    <h2>Gestion des réservations</h2>
-                </div>
-
-                <div class="filters-bar">
-                    <input type="date" id="reservation-date-filter">
-                    <select id="reservation-status-filter">
-                        <option value="all">Tous les statuts</option>
-                        <option value="pending">En attente</option>
-                        <option value="confirmed">Confirmée</option>
-                        <option value="cancelled">Annulée</option>
-                        <option value="completed">Terminée</option>
-                    </select>
-                </div>
-
-                <div class="table-container">
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>N° Réservation</th>
-                                <th>Date visite</th>
-                                <th>Creneau</th>
-                                <th>Billets</th>
-                                <th>Statut</th>
-                                <th>Check-in</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="reservations-table-body">
-                            <!-- Données chargées dynamiquement -->
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <!-- Product Modal -->
-    <div id="product-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3 id="modal-title">Ajouter un produit</h3>
-            <form id="product-form">
-                <input type="hidden" id="product-id">
-                
-                <div class="form-group">
-                    <label for="product-name">Nom du produit *</label>
-                    <input type="text" id="product-name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="product-description">Description *</label>
-                    <textarea id="product-description" required></textarea>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="product-price">Prix (USD) *</label>
-                        <input type="number" id="product-price" step="0.01" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="product-category">Catégorie *</label>
-                        <select id="product-category" required>
-                            <option value="vêtements">Vêtements</option>
-                            <option value="livres">Livres</option>
-                            <option value="accessoires">Accessoires</option>
-                            <option value="art">Art</option>
-                        </select>
+                <div class="interets">
+                    <div class="interets-items">
+                        <span><i class="fas fa-futbol"></i> Football</span>
+                        <span><i class="fas fa-bicycle"></i> Vélo</span>
+                        <span><i class="fas fa-basketball-ball"></i> Basketball</span>
+                        <span><i class="fas fa-microchip"></i> Veille cybersécurité</span>
+                        <span><i class="fas fa-robot"></i> IA</span>
+                        <span><i class="fas fa-hand-holding-heart"></i> Bénévolat</span>
                     </div>
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="product-stock">Stock *</label>
-                        <input type="number" id="product-stock" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="product-sku">SKU *</label>
-                        <input type="text" id="product-sku" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>
-                        <input type="checkbox" id="product-featured"> 
-                        Produit en vedette
-                    </label>
-                </div>
-
-                <div class="form-actions">
-                    <button type="button" class="btn-secondary" id="cancel-product">Annuler</button>
-                    <button type="submit" class="btn-primary">Enregistrer</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 
-    <script src="../client/js/admin.js"></script>
+    <script>
+        document.getElementById('downloadPDF').addEventListener('click', function() {
+            this.style.display = 'none';
+            window.print();
+            setTimeout(() => this.style.display = 'inline-flex', 200);
+        });
+    </script>
 </body>
 </html>
