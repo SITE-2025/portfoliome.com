@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seraphin KIMA - Portfolio Développeur</title>
+    <!-- Google Fonts (Inter et Playfair Display) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- AOS (Animate on Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafc;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        /* Variables */
+        :root {
+            --primary: #0a192f;
+            --secondary: #64ffda;
+            --accent: #112240;
+            --text-light: #ccd6f6;
+            --text-dark: #8892b0;
+            --white: #e6f1ff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(100,255,218,0.03) 0%, transparent 70%);
+            transform: rotate(30deg);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title span {
+            color: var(--secondary);
+        }
+
+        .hero-description {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 1px solid var(--secondary);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--secondary);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(100, 255, 218, 0.1);
+        }
+
+        /* Sections communes */
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .section-subtitle {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        /* À propos */
+        .about {
+            background: #fff;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #4b5563;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 300px;
+            border-radius: 50%;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.2);
+            border: 4px solid var(--secondary);
+        }
+
+        /* Compétences */
+        .skills {
+            background: #f3f6fc;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px -15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-card h3 i {
+            color: var(--secondary);
+        }
+
+        .skill-bar {
+            margin-bottom: 1rem;
+        }
+
+        .skill-bar-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+            color: #4b5563;
+        }
+
+        .skill-bar-progress {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), #64b5f6);
+            width: 0%;
+            transition: width 1s ease;
+        }
+
+        /* Projets */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px -15px rgba(0,0,0,0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 40px -20px rgba(0,0,0,0.2);
+        }
+
+        .project-image {
+            height: 200px;
+            background: #1f2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            color: #4b5563;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech span {
+            background: #e2e8f0;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .project-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Parcours */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--secondary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary);
+            border: 3px solid var(--primary);
+            z-index: 2;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: auto;
+        }
+
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-content .date {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--primary);
+            color: white;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact .section-title::after {
+            background: var(--secondary);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 4px;
+            color: white;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a192f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(100,255,218,0.1);
+        }
+
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 50px);
+                margin-left: 50px !important;
+            }
+
+            .nav-links {
+                display: none; /* Pour simplifier, on peut ajouter un menu hamburger plus tard */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">S.K.</a>
+        <div class="nav-links">
+            <a href="#about">À propos</a>
+            <a href="#skills">Compétences</a>
+            <a href="#projects">Projets</a>
+            <a href="#timeline">Parcours</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="hero-subtitle" data-aos="fade-up">Bonjour, je suis</p>
+            <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">Seraphin <span>KIMA</span></h1>
+            <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">Technicien Réseaux & Sécurité</h1>
+            <p class="hero-description" data-aos="fade-up" data-aos-delay="300">
+                Passionné par la cybersécurité et le développement, je crée des solutions techniques et sécurisées.
+            </p>
+            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400">
+                <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+                <a href="#contact" class="btn btn-outline">Me contacter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos -->
+    <section class="about" id="about">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">À propos</h2>
+            <p class="section-subtitle">Découvrez qui je suis</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text" data-aos="fade-right">
+                <p>Étudiant en Licence Réseaux et Télécommunications, je suis passionné par la cybersécurité et le développement. Autonome et curieux, j'apprends constamment de nouvelles technologies pour rester à la pointe.</p>
+                <p>J'ai réalisé de nombreux projets personnels dans les domaines de la sécurité offensive, du développement web et de l'administration réseau. Je suis également actif en freelance pour des missions de dépannage et conseil informatique.</p>
+                <p>Mon objectif : mettre mes compétences au service de projets innovants et contribuer à un monde numérique plus sûr.</p>
+            </div>
+            <div class="about-image" data-aos="fade-left">
+                <!-- Placeholder pour photo - remplace par ton image -->
+                <img src="./photo.jpeg" alt="Seraphin KIMA" style="background: #112240; border-radius: 50%; width: 300px; height: 300px; object-fit: cover;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Compétences -->
+    <section class="skills" id="skills">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Compétences</h2>
+            <p class="section-subtitle">Ce que je maîtrise</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card" data-aos="flip-left">
+                <h3><i class="fas fa-network-wired"></i> Réseaux</h3>
+                <div class="skill-bar">
+                    <div class="skill-bar-info"><span>LAN/VLAN, DHCP, routage</span><span>70%</span></div>
+                    <div class="skill-bar-progress"><div class="skill-bar-fill" style="width:70%"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-bar-info"><span>Wireshark, analyse trafic</span><span>65%</span></div>
+                    <div class="skill-bar-progress"><div class="skill-bar-fill" style="width:65%"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-bar-info"><span>Linux Apache</span><span>60%</span></div>
+                    <div class="skill-bar-progress"><div class="skill-bar-fill" style="width:60%"></div></div>
+                </div>
+            </div>
+            <div class="skill-card" data-aos="flip-left" data-aos-delay="100">
+                <h3><i class="fas fa-shield-alt"></i> Cybersécurité</h3>
+                <div class="skill-bar">
+                    <div class="skill-bar-info"><span>Metasploit, tests intrusion</span><span>80%</span></div>
+                    <div class="skill-bar-progress"><div class="skill-bar-fill" style="width:80%"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-bar-info"><span>Phishing, portails captifs</span><span>75%</span></div>
+                    <div class="skill-bar-progress"><div class="skill-bar-fill" style="width:75%"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-bar-info"><span>Analyse de paquets</span><span>70%</span></div>
+                    <div class="skill-bar-progress"><div class="skill-bar-fill" style="width:70%"></div></div>
+                </div>
+            </div>
+            <div class="skill-card" data-aos="flip-left" data-aos-delay="200">
+                <h3><i class="fas fa-code"></i> Développement</h3>
+                <div class="skill-bar">
+                    <div class="skill-bar-info"><span>HTML/CSS/JavaScript</span><span>65%</span></div>
+                    <div class="skill-bar-progress"><div class="skill-bar-fill" style="width:65%"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-bar-info"><span>Python,JavaScript, C (notions)</span><span>50%</span></div>
+                    <div class="skill-bar-progress"><div class="skill-bar-fill" style="width:50%"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-bar-info"><span>Git/GitHub</span><span>70%</span></div>
+                    <div class="skill-bar-progress"><div class="skill-bar-fill" style="width:70%"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projets -->
+    <section class="projects" id="projects">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Projets</h2>
+            <p class="section-subtitle">Réalisations personnelles</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card" data-aos="zoom-in">
+                <div class="project-image"><i class="fas fa-skull"></i></div>
+                <div class="project-content">
+                    <h3>Malware éducatif (Metasploit)</h3>
+                    <p>Développement d'un programme de prise de contrôle à distance dans un cadre éthique.</p>
+                    <div class="project-tech">
+                        <span>Metasploit</span><span>Kali</span><span>Python</span>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="project-image"><i class="fas fa-network-wired"></i></div>
+                <div class="project-content">
+                    <h3>Analyse réseau Wireshark</h3>
+                    <p>Capture de paquets, détection de connexions HTTPS, HTTP etc...</p>
+                    <div class="project-tech">
+                        <span>Wireshark</span><span>TCP/IP</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#"><i class="fab fa-github"></i> Notes</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="project-image"><i class="fas fa-fish"></i></div>
+                <div class="project-content">
+                    <h3>Sites phishing & portails captifs</h3>
+                    <p>Création de pages de phishing pour sensibilisation à la sécurité (tests éthiques).</p>
+                    <div class="project-tech">
+                        <span>HTML/CSS</span><span>PHP</span><span>Apache</span>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in">
+                <div class="project-image"><i class="fas fa-globe"></i></div>
+                <div class="project-content">
+                    <h3>CV en ligne</h3>
+                    <p>visitez et telechargez mon cv en ligne.</p>
+                    <div class="project-tech">
+                        <span>HTML/CSS</span><span>JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://site-2025.github.io/CV-SERAPHIN.K/file.html" target="_blank"><i class="fab fa-github"></i> Repo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="project-image"><i class="fas fa-project-diagram"></i></div>
+                <div class="project-content">
+                    <h3>Configuration LAN/VLAN</h3>
+                    <p>Mise en place de réseaux avec DHCP, routage statique sous Cisco Packet Tracer.</p>
+                    <div class="project-tech">
+                        <span>Cisco</span><span>VLAN</span><span>DHCP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="project-image"><i class="fas fa-server"></i></div>
+                <div class="project-content">
+                    <h3>Serveur web Apache</h3>
+                    <p>Installation et configuration d'un serveur Apache sous Ubuntu.</p>
+                    <div class="project-tech">
+                        <span>Linux</span><span>Apache</span><span>Bash</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parcours (Timeline) -->
+    <section class="timeline-section" id="timeline">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Parcours</h2>
+            <p class="section-subtitle">Formation et expériences</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="date">2025 - présent</span>
+                    <h3>Licence Réseaux & Télécoms</h3>
+                    <p>ESMI, Ouagadougou, Burkina Faso</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="date">2022 - 2023</span>
+                    <h3>Baccalauréat</h3>
+                    <p>Collège privé ETIENNE, Côte d'Ivoire</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="date">2023 - aujourd'hui</span>
+                    <h3>Technicien informatique freelance</h3>
+                    <p>Dépannage, maintenance, installation pour particuliers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Contact</h2>
+            <p class="section-subtitle">Discutons de votre projet</p>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info" data-aos="fade-right">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Ouagadougou, Burkina Faso</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:kimaseraphin@icloud.com">kimaseraphin@icloud.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+22667770963">+226 67 77 09 63 / 78 13 62 40</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <a href="https://github.com/SITE-2025/CV-SERAPHIN.K" target="_blank">github.com/seraphin-kima</a>
+                </div>
+             
+            </div>
+            <form class="contact-form" data-aos="fade-left" action="#" method="post">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Votre nom" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Votre email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="subject" placeholder="Sujet">
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Votre message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Seraphin KIMA. Tous droits réservés. | <a href="#home">Haut de page</a></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Smooth scroll pour les ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animation des barres de compétences au scroll
+        const skillBars = document.querySelectorAll('.skill-bar-fill');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.style.width;
+                    entry.target.style.width = width; // déjà défini en inline, mais on peut forcer l'animation
+                }
+            });
+        }, { threshold: 0.5 });
+
+        skillBars.forEach(bar => observer.observe(bar));
+    </script>
+</body>
+</html>
