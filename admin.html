@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Messages reçus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f4f6f9; color: #1f2937; padding: 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { margin-bottom: 1rem; color: #0a192f; }
+        .login { max-width: 400px; margin: 100px auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
+        .login input { width: 100%; padding: 0.8rem; margin: 0.5rem 0; border: 1px solid #ddd; border-radius: 4px; }
+        .login button { width: 100%; padding: 0.8rem; background: #0a192f; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; }
+        .login button:hover { background: #1e4a6f; }
+        .dashboard { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; overflow-x: auto; display: block; }
+        th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid #e2e8f0; }
+        th { background: #f1f5f9; color: #0a192f; }
+        .message-preview { max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .error { color: #dc2626; margin-top: 1rem; text-align: center; }
+        footer { text-align: center; margin-top: 2rem; font-size: 0.8rem; color: #6c757d; }
+        button { background: #0a192f; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; margin-bottom: 1rem; }
+        button:hover { background: #1e4a6f; }
+    </style>
+</head>
+<body>
+<div class="container" id="app">
+    <div id="loginPanel" class="login">
+        <h2>Accès administrateur</h2>
+        <input type="password" id="password" placeholder="Mot de passe" autofocus>
+        <button id="loginBtn">Se connecter</button>
+        <div id="loginError" class="error"></div>
+    </div>
+
+    <div id="dashboardPanel" style="display:none;">
+        <div class="dashboard">
+            <h1>Messages reçus</h1>
+            <button id="refreshBtn">⟳ Actualiser</button>
+            <div style="overflow-x:auto;">
+                <table id="messagesTable">
+                    <thead>
+                        <tr><th>Date</th><th>Nom</th><th>Email</th><th>Sujet</th><th>Message</th></tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr><td colspan="5">Chargement...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="tableError" class="error"></div>
+        </div>
+        <footer><a href="index.html">← Retour au site</a></footer>
+    </div>
+</div>
+
+<script>
+    // ========== CONFIGURATION ==========
+    const PASSWORD = "admin123"; // CHANGE CE MOT DE PASSE
+    const SHEET_DATA_URL = "https://script.google.com/macros/s/AKfycbwNvUOas88Gx5DOvElv7bkb70sjIzVOCb1AjKvHh49VSydrB1mFfePp2YHiIcpJz7F__g/exec";
+    // ===================================
+
+    const loginPanel = document.getElementById('loginPanel');
+    const dashboardPanel = document.getElementById('dashboardPanel');
+    const loginBtn = document.getElementById('loginBtn');
+    const passwordInput = document.getElementById('password');
+    const loginError = document.getElementById('loginError');
+    const refreshBtn = document.getElementById('refreshBtn');
+    const tableBody = document.getElementById('tableBody');
+    const tableError = document.getElementById('tableError');
+
+    if (sessionStorage.getItem('adminAuth') === 'true') {
+        loginPanel.style.display = 'none';
+        dashboardPanel.style.display = 'block';
+        loadMessages();
+    }
+
+    loginBtn.addEventListener('click', () => {
+        if (passwordInput.value === PASSWORD) {
+            sessionStorage.setItem('adminAuth', 'true');
+            loginPanel.style.display = 'none';
+            dashboardPanel.style.display = 'block';
+            loadMessages();
+        } else {
+            loginError.textContent = 'Mot de passe incorrect.';
+        }
+    });
+
+    refreshBtn.addEventListener('click', () => loadMessages());
+
+    async function loadMessages() {
+        tableBody.innerHTML = '<tr><td colspan="5">Chargement...</td></tr>';
+        tableError.textContent = '';
+        try {
+            const response = await fetch(SHEET_DATA_URL);
+            if (!response.ok) throw new Error('Erreur de chargement');
+            const messages = await response.json();
+            if (messages.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="5">Aucun message pour le moment.</td></tr>';
+                return;
+            }
+            tableBody.innerHTML = messages.map(msg => `
+                <tr>
+                    <td>${new Date(msg.timestamp).toLocaleString()}</td>
+                    <td>${escapeHtml(msg.nom)}</td>
+                    <td>${escapeHtml(msg.email)}</td>
+                    <td>${escapeHtml(msg.sujet || '')}</td>
+                    <td class="message-preview" title="${escapeHtml(msg.message)}">${escapeHtml(msg.message)}</td>
+                </tr>
+            `).join('');
+        } catch (err) {
+            console.error(err);
+            tableError.textContent = 'Impossible de récupérer les messages. Vérifie l\'URL du script et les permissions.';
+            tableBody.innerHTML = '<tr><td colspan="5">Erreur de chargement</td></tr>';
+        }
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+</script>
+</body>
+</html>
