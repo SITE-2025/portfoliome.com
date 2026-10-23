@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Portfolio de Seraphin KIMA - Ingénieur de Travaux en Réseaux Informatiques et Télécommunications.">
+    <title>Seraphin KIMA - Portfolio | Ingénieur Réseaux & Télécoms</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Ton CSS (à minifier avant déploiement) -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <!-- BANNIÈRE COPYRIGHT -->
+    <div id="copyright-banner">
+        © 2026 Seraphin KIMA — Tous droits réservés.
+    </div>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#home" class="logo" id="logoHome">S<span>.</span>K<span>.</span></a>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#about">À propos</a>
+            <a href="#skills">Compétences</a>
+            <a href="#projects">Projets</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#timeline">Parcours</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="hero-subtitle" data-aos="fade-up">Bonjour, je suis</p>
+            <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">Seraphin <span>KIMA</span></h1>
+            <h2 class="hero-title role" data-aos="fade-up" data-aos-delay="200">Ingénieur de Travaux en Réseaux & Télécommunications</h2>
+            <p class="hero-description" data-aos="fade-up" data-aos-delay="300">
+                Passionné par la cybersécurité et le développement, je conçois des solutions techniques fiables et sécurisées.
+            </p>
+            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400">
+                <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> Voir mes projets</a>
+                <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Me contacter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT (puzzle) -->
+    <section class="about" id="about">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">À propos</h2>
+            <p class="section-subtitle">Découvrez qui je suis</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text" data-aos="fade-right">
+                <p><strong>Ingénieur de Travaux en Réseaux Informatiques et Télécommunications</strong>, je suis passionné par la cybersécurité et le développement. Autonome et curieux, j'apprends constamment de nouvelles technologies pour rester à la pointe.</p>
+                <p>J'ai réalisé de nombreux projets personnels dans les domaines de la <strong>sécurité offensive</strong>, du <strong>développement web</strong>, de l'<strong>administration réseau</strong> et de la <strong>virtualisation</strong> (VirtualBox, VMware). Je suis également actif en freelance pour des missions de dépannage et conseil informatique.</p>
+                <p>J'ai effectué un stage au <strong>CCVA (Centre de Contrôle des Véhicules Automobiles)</strong> à Ouagadougou, où j'ai renforcé mes compétences en dépannage réseau, configuration et assistance utilisateur.</p>
+            </div>
+            <div class="about-image" data-aos="fade-left">
+                <div class="puzzle-wrapper" id="puzzle">
+                    <div class="puzzle-half puzzle-left">
+                        <img src="./photo.jpeg" alt="Seraphin KIMA - gauche" loading="lazy">
+                    </div>
+                    <div class="puzzle-half puzzle-right">
+                        <img src="./photo.jpeg" alt="Seraphin KIMA - droite" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills" id="skills">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Compétences</h2>
+            <p class="section-subtitle">Ce que je maîtrise</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card" data-aos="flip-left">
+                <h3><i class="fas fa-network-wired"></i> Réseaux</h3>
+                <div class="skill-bar"><div class="skill-bar-info"><span>LAN/VLAN, DHCP, Routage</span><span>75%</span></div><div class="skill-bar-progress"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-info"><span>Wireshark, analyse trafic</span><span>70%</span></div><div class="skill-bar-progress"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-info"><span>Linux / Apache</span><span>65%</span></div><div class="skill-bar-progress"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+            </div>
+            <div class="skill-card" data-aos="flip-left" data-aos-delay="100">
+                <h3><i class="fas fa-shield-alt"></i> Cybersécurité</h3>
+                <div class="skill-bar"><div class="skill-bar-info"><span>Metasploit, tests intrusion</span><span>80%</span></div><div class="skill-bar-progress"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-info"><span>Phishing, portails captifs</span><span>75%</span></div><div class="skill-bar-progress"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-info"><span>Injection SQL</span><span>65%</span></div><div class="skill-bar-progress"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+            </div>
+            <div class="skill-card" data-aos="flip-left" data-aos-delay="200">
+                <h3><i class="fas fa-code"></i> Développement</h3>
+                <div class="skill-bar"><div class="skill-bar-info"><span>HTML / CSS / JavaScript</span><span>70%</span></div><div class="skill-bar-progress"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-info"><span>Python / C (notions)</span><span>50%</span></div><div class="skill-bar-progress"><div class="skill-bar-fill" style="width:50%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-info"><span>Git / GitHub</span><span>70%</span></div><div class="skill-bar-progress"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+            </div>
+            <div class="skill-card" data-aos="flip-left" data-aos-delay="300">
+                <h3><i class="fas fa-database"></i> Bases de données</h3>
+                <div class="skill-bar"><div class="skill-bar-info"><span>MySQL / MariaDB</span><span>65%</span></div><div class="skill-bar-progress"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-info"><span>XAMPP (Apache, MySQL, PHP)</span><span>70%</span></div><div class="skill-bar-progress"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-info"><span>Requêtes SQL</span><span>60%</span></div><div class="skill-bar-progress"><div class="skill-bar-fill" style="width:60%"></div></div></div>
+            </div>
+            <div class="skill-card" data-aos="flip-left" data-aos-delay="400">
+                <h3><i class="fas fa-server"></i> Virtualisation</h3>
+                <div class="skill-bar"><div class="skill-bar-info"><span>VirtualBox</span><span>80%</span></div><div class="skill-bar-progress"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-info"><span>VMware Workstation</span><span>70%</span></div><div class="skill-bar-progress"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-info"><span>Machines virtuelles (Kali, Ubuntu, Windows)</span><span>75%</span></div><div class="skill-bar-progress"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects" id="projects">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Projets</h2>
+            <p class="section-subtitle">Réalisations personnelles</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card" data-aos="zoom-in">
+                <div class="project-image"><i class="fas fa-skull"></i></div>
+                <div class="project-content">
+                    <h3>Malware éducatif (Metasploit)</h3>
+                    <p>Développement d'un programme de prise de contrôle à distance dans un cadre éthique.</p>
+                    <div class="project-tech"><span>Metasploit</span><span>Kali</span><span>Python</span></div>
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="project-image"><i class="fas fa-network-wired"></i></div>
+                <div class="project-content">
+                    <h3>Analyse réseau Wireshark</h3>
+                    <p>Capture de paquets, détection de connexions HTTPS, HTTP, etc.</p>
+                    <div class="project-tech"><span>Wireshark</span><span>TCP/IP</span></div>
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="project-image"><i class="fas fa-fish"></i></div>
+                <div class="project-content">
+                    <h3>Sites phishing & portails captifs</h3>
+                    <p>Création de pages de phishing pour sensibilisation à la sécurité (tests éthiques).</p>
+                    <div class="project-tech"><span>HTML/CSS</span><span>PHP</span><span>Apache</span></div>
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in">
+                <div class="project-image"><i class="fas fa-database"></i></div>
+                <div class="project-content">
+                    <h3>Base de données avec XAMPP</h3>
+                    <p>Installation et configuration d'un serveur local XAMPP avec création de bases de données relationnelles.</p>
+                    <div class="project-tech"><span>XAMPP</span><span>MySQL</span><span>phpMyAdmin</span></div>
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="project-image"><i class="fas fa-user-secret"></i></div>
+                <div class="project-content">
+                    <h3>Injection SQL (tests éthiques)</h3>
+                    <p>Découverte et exploitation de failles d'injection SQL sur des environnements de test.</p>
+                    <div class="project-tech"><span>SQL</span><span>DVWA</span><span>Burp Suite</span></div>
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="project-image"><i class="fas fa-cubes"></i></div>
+                <div class="project-content">
+                    <h3>Environnements virtualisés</h3>
+                    <p>Création de laboratoires virtuels pour tests réseau et cybersécurité.</p>
+                    <div class="project-tech"><span>VirtualBox</span><span>VMware</span><span>Kali</span></div>
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in">
+                <div class="project-image"><i class="fas fa-globe"></i></div>
+                <div class="project-content">
+                    <h3>CV en ligne</h3>
+                    <p>Visitez et téléchargez mon CV en ligne.</p>
+                    <div class="project-tech"><span>HTML/CSS</span><span>JavaScript</span></div>
+                    <div class="project-links">
+                        <a href="https://site-2025.github.io/CV-SERAPHIN.K/" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Voir mon CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="project-image"><i class="fas fa-project-diagram"></i></div>
+                <div class="project-content">
+                    <h3>Configuration LAN/VLAN</h3>
+                    <p>Mise en place de réseaux avec DHCP, routage statique sous Cisco Packet Tracer.</p>
+                    <div class="project-tech"><span>Cisco</span><span>VLAN</span><span>DHCP</span></div>
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="project-image"><i class="fas fa-server"></i></div>
+                <div class="project-content">
+                    <h3>Serveur web Apache</h3>
+                    <p>Installation et configuration d'un serveur Apache sous Ubuntu.</p>
+                    <div class="project-tech"><span>Linux</span><span>Apache</span><span>Bash</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="certifications" id="certifications">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Certifications</h2>
+            <p class="section-subtitle">Mes formations certifiantes</p>
+        </div>
+        <div class="cert-grid">
+
+            <div class="cert-card" data-aos="fade-up">
+                <div class="cert-image-zone" onclick="openLightbox(this)">
+                    <img src="./certifs/certificat-zaid-zabi.jpg" alt="Certificat Learn Ethical Hacking from Scratch" loading="lazy"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder" style="display:none;">
+                        <i class="fas fa-image"></i>
+                        <span>Votre certificat ici</span>
+                    </div>
+                    <div class="zoom-hint"><i class="fas fa-search-plus"></i> Agrandir</div>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-badge"><i class="fas fa-user-secret"></i></div>
+                    <div class="cert-content">
+                        <h3>Learn Ethical Hacking from Scratch</h3>
+                        <div class="cert-issuer">Zaid Zabi</div>
+                        <span class="cert-date">Novembre 2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="cert-image-zone" onclick="openLightbox(this)">
+                    <img src="./certifs/certificat-google.jpg" alt="Certificat Technical Support Fundamentals" loading="lazy"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder" style="display:none;">
+                        <i class="fas fa-image"></i>
+                        <span>Votre certificat ici</span>
+                    </div>
+                    <div class="zoom-hint"><i class="fas fa-search-plus"></i> Agrandir</div>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-badge"><i class="fas fa-laptop-medical"></i></div>
+                    <div class="cert-content">
+                        <h3>Technical Support Fundamentals</h3>
+                        <div class="cert-issuer">Google — Architecture PC &amp; Dépannage</div>
+                        <span class="cert-date">Octobre 2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="cert-image-zone" onclick="openLightbox(this)">
+                    <img src="./certifs/certificat-e-council.jpg" alt="Certificat Ethical Hacking Essentials" loading="lazy"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder" style="display:none;">
+                        <i class="fas fa-image"></i>
+                        <span>Votre certificat ici</span>
+                    </div>
+                    <div class="zoom-hint"><i class="fas fa-search-plus"></i> Agrandir</div>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-badge"><i class="fas fa-shield-alt"></i></div>
+                    <div class="cert-content">
+                        <h3>Ethical Hacking Essentials</h3>
+                        <div class="cert-issuer">E-Council</div>
+                        <span class="cert-date">Février 2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="cert-image-zone" onclick="openLightbox(this)">
+                    <img src="./certifs/certificat-immersion.jpg" alt="Certificat Immersion patriotique" loading="lazy"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder" style="display:none;">
+                        <i class="fas fa-image"></i>
+                        <span>Votre certificat ici</span>
+                    </div>
+                    <div class="zoom-hint"><i class="fas fa-search-plus"></i> Agrandir</div>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-badge"><i class="fas fa-flag"></i></div>
+                    <div class="cert-content">
+                        <h3>Immersion patriotique (ISTAPEM)</h3>
+                        <div class="cert-issuer">Gendarmerie Nationale</div>
+                        <span class="cert-date">Décembre 2023</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="cert-image-zone" onclick="openLightbox(this)">
+                    <img src="./certifs/certificat-stage-ccva.jpg" alt="Certificat de stage CCVA" loading="lazy"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder" style="display:none;">
+                        <i class="fas fa-image"></i>
+                        <span>Votre certificat ici</span>
+                    </div>
+                    <div class="zoom-hint"><i class="fas fa-search-plus"></i> Agrandir</div>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-badge"><i class="fas fa-briefcase"></i></div>
+                    <div class="cert-content">
+                        <h3>Stage en Informatique – CCVA</h3>
+                        <div class="cert-issuer">Centre de Contrôle des Véhicules Automobiles</div>
+                        <span class="cert-date">15 juin – 14 septembre 2026</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline-section" id="timeline">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Parcours</h2>
+            <p class="section-subtitle">Du plus récent au plus ancien</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="date">15 juin – 14 septembre 2026</span>
+                    <h3>Stage – CCVA</h3>
+                    <p>Centre de Contrôle des Véhicules Automobiles, Ouagadougou. Dépannage réseau, configuration, assistance utilisateur.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="date">2025 – présent</span>
+                    <h3>Ingénieur de Travaux en Réseaux &amp; Télécoms</h3>
+                    <p>ESMI, Ouagadougou, Burkina Faso (en cours)</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="date">2023 – aujourd'hui</span>
+                    <h3>Technicien informatique freelance</h3>
+                    <p>Dépannage, maintenance, installation pour particuliers et petites structures.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="date">Décembre 2023</span>
+                    <h3>Immersion patriotique (ISTAPEM)</h3>
+                    <p>Formation civique et citoyenne</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="date">2022 – 2023</span>
+                    <h3>Baccalauréat</h3>
+                    <p>Collège privé ETIENNE, Côte d'Ivoire</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="date">2019 – 2020</span>
+                    <h3>BEPC</h3>
+                    <p>Collège Moderne de Bingerville, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Contact</h2>
+            <p class="section-subtitle">Discutons de votre projet</p>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info" data-aos="fade-right">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Kadiogo, Patte d'oie secteur 52, Ouagadougou, Burkina Faso</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:seraphinverifed@gmail.com">seraphinverifed@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+22667770963">+226 67 77 09 63 / 78 13 62 40</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <a href="https://site-2025.github.io/portfoliome.com/portfolio.html" target="_blank">Portfolio / GitHub</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-file-alt"></i>
+                    <a href="https://site-2025.github.io/CV-SERAPHIN.K/" target="_blank">Mon CV en ligne</a>
+                </div>
+            </div>
+            <form class="contact-form" id="contactForm" data-aos="fade-left">
+                <div class="form-group"><input type="text" id="name" name="name" placeholder="Votre nom" required></div>
+                <div class="form-group"><input type="email" id="email" name="email" placeholder="Votre email" required></div>
+                <div class="form-group"><input type="text" id="subject" name="subject" placeholder="Sujet"></div>
+                <div class="form-group"><textarea id="message" name="message" placeholder="Votre message" required></textarea></div>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Seraphin KIMA. Tous droits réservés. | <a href="#home">Haut de page</a></p>
+    </footer>
+
+    <div id="toast" class="toast">Message envoyé !</div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="close-hint"><i class="fas fa-times"></i></span>
+        <img id="lightbox-img" src="" alt="Certificat agrandi">
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./script/script.js"></script>
+</body>
+</html>
